@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { TourContext } from './App';
 
-const Tour = ({ id, name, info, image, price, removeTour }) => {
+const Tour = ({ id, name, info, image, price }) => {
   const [readMore, setReadMore] = useState(false);
-
+  const { removeTour } = useContext(TourContext);
   return (
     <article className='single-tour'>
       <img src={image} alt={name} />

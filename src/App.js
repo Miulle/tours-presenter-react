@@ -5,6 +5,8 @@ import Tours from './Tours';
 // I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-tours-project';
 
+export const TourContext = React.createContext();
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
@@ -51,9 +53,11 @@ function App() {
   }
 
   return (
-    <main>
-      <Tours tours={tours} removeTour={removeTour} />
-    </main>
+    <TourContext.Provider value={{ removeTour }}>
+      <main>
+        <Tours tours={tours} />
+      </main>
+    </TourContext.Provider>
   );
 }
 
